@@ -17,21 +17,20 @@ class DictionaryTest {
     }
 
     @Test
-    public void testGetGermanWord() {
-        dictionary.addWordsToDictionary("hello", "hallo");
+    public void testGetGermanWord() throws DictionaryException {
+       dictionary.addWordsToDictionary("hello", "hallo");
 
         assertEquals("hallo", dictionary.getGermanWord("hello"));
     }
 
     @Test
-    public void testGetEnglishWord() {
+    public void testGetEnglishWord() throws DictionaryException {
         dictionary.addWordsToDictionary("hello", "hallo");
-
         assertEquals("hello", dictionary.getEnglischWord("hallo"));
     }
    
     @Test
-    public void testAddWordsToDictionary() {
+    public void testAddWordsToDictionary() throws DictionaryException{
         dictionary.addWordsToDictionary("apple", "apfel");
 
         assertEquals("apfel", dictionary.getGermanWord("apple"));
@@ -39,15 +38,26 @@ class DictionaryTest {
     }
 
     @Test
-    public void testRemoveWordFromDictionary() {
+    public void testRemoveWordFromDictionary() throws DictionaryException{
         dictionary.addWordsToDictionary("apple", "apfel");
+        assertEquals("apfel", dictionary.getGermanWord("apple"));
+        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+
         dictionary.removeWordFromDictionary("apple");
-        assertEquals("no english word found", dictionary.getEnglischWord("apfel"));
-        assertEquals("no translation found", dictionary.getGermanWord("apple"));
+        assertThrows(DictionaryException.class,
+        () ->{
+            dictionary.getEnglischWord("apfel");
+        }
+        );
+        assertThrows(DictionaryException.class,
+        () ->{
+            dictionary.getGermanWord("apple");
+        }
+        );
     }
 
     @Test
-    public void testChangeTranslation() {
+    public void testChangeTranslation() throws DictionaryException {
         dictionary.addWordsToDictionary("hello", "hallo");
         dictionary.changeTranslation("hello", "guten Tag");
 

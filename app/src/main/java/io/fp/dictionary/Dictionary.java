@@ -9,22 +9,25 @@ public class Dictionary {
 
     private Map<String, String> dictionary = new TreeMap<>();
 
-    public void addWordsToDictionary(String english, String german) {
+    public void addWordsToDictionary(String english, String german) throws DictionaryException {
+        if(dictionary.containsKey(english)) throw new DictionaryException(english + " is not in the dictionary");
         dictionary.putIfAbsent(english, german);
+        
     }
 
-    public String removeWordFromDictionary(String english) {
-        if(!dictionary.containsKey(english)) return "nothing to remove";
-        return dictionary.remove(english);
+    public void removeWordFromDictionary(String english) throws DictionaryException {
+        if(!dictionary.containsKey(english)) throw new DictionaryException(english+ " is not in the dictionary");
+        dictionary.remove(english);
+        
     }
 
-    public String getGermanWord(String english) {
-        if(!dictionary.containsKey(english)) return "no translation found";
+    public String getGermanWord(String english) throws DictionaryException{
+        if(!dictionary.containsKey(english)) throw new DictionaryException(english+ " is not in the dictionary");
         return dictionary.get(english);
     }
 
-    public String getEnglischWord(String germanWord) {
-        if (!dictionary.containsValue(germanWord)) return "no english word found";
+    public String getEnglischWord(String germanWord) throws DictionaryException{
+        if (!dictionary.containsValue(germanWord)) throw new DictionaryException(germanWord+ " is not in the dictionary");
         
         String englishWord = "";
         for (Entry<String, String> entry : dictionary.entrySet()) {
@@ -35,8 +38,8 @@ public class Dictionary {
        return englishWord;
     }
 
-    public String changeTranslation(String englishWord, String germanWord) {
-        if (!dictionary.containsKey(englishWord)) return "found nothing to change"; 
+    public String changeTranslation(String englishWord, String germanWord) throws DictionaryException {
+        if (!dictionary.containsKey(englishWord)) throw new DictionaryException(englishWord+ " is not in the dictionary"); 
         return dictionary.replace(englishWord, germanWord);
     }
 
