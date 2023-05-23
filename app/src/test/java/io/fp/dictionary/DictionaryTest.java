@@ -18,21 +18,20 @@ class DictionaryTest {
 
     @Test
     public void testGetGermanWord() {
-        dictionary.addWordsToDictionary("hello", "hallo");
+       assertTrue(dictionary.addWordsToDictionary("hello", "hallo"));
 
         assertEquals("hallo", dictionary.getGermanWord("hello"));
     }
 
     @Test
     public void testGetEnglishWord() {
-        dictionary.addWordsToDictionary("hello", "hallo");
-
+        assertTrue(dictionary.addWordsToDictionary("hello", "hallo"));
         assertEquals("hello", dictionary.getEnglischWord("hallo"));
     }
    
     @Test
     public void testAddWordsToDictionary() {
-        dictionary.addWordsToDictionary("apple", "apfel");
+        assertTrue(dictionary.addWordsToDictionary("apple", "apfel"));
 
         assertEquals("apfel", dictionary.getGermanWord("apple"));
         assertEquals("apple", dictionary.getEnglischWord("apfel"));
@@ -40,7 +39,7 @@ class DictionaryTest {
 
     @Test
     public void testRemoveWordFromDictionary() {
-        dictionary.addWordsToDictionary("apple", "apfel");
+        assertTrue(dictionary.addWordsToDictionary("apple", "apfel"));
         assertEquals("apfel", dictionary.getGermanWord("apple"));
         assertEquals("apple", dictionary.getEnglischWord("apfel"));
 
@@ -52,7 +51,7 @@ class DictionaryTest {
     @Test
     public void testChangeTranslation() {
         dictionary.addWordsToDictionary("hello", "hallo");
-        dictionary.changeTranslation("hello", "guten Tag");
+        assertTrue(dictionary.changeTranslation("hello", "guten Tag"));
 
         assertEquals("guten Tag", dictionary.getGermanWord("hello"));
     }
