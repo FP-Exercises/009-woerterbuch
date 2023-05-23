@@ -7,30 +7,26 @@ public class Dictionary {
 
     private Map<String, String> dictionary = new TreeMap<>();
 
-    public boolean addWordsToDictionary(String english, String german) {
+    public void addWordsToDictionary(String english, String german) throws DictionaryException {
        //Aufgabe a)
-       return false;
     }
 
-    public boolean removeWordFromDictionary(String english) {
+    public void removeWordFromDictionary(String english) throws DictionaryException{
         //Aufgabe b)
-        return false;
-        
     }
 
-    public boolean changeTranslation(String englishWord, String germanWord) {
+    public void changeTranslation(String englishWord, String germanWord) throws DictionaryException{
         //Aufgabe c)
-        return false; 
     }
 
-    public boolean getGermanWord(String english) {
+    public String getGermanWord(String english) throws DictionaryException{
         //Aufgabe d)
-        return false;
+        return null;
     }
 
-    public boolean getEnglischWord(String germanWord) {
+    public String getEnglischWord(String germanWord) throws DictionaryException{
         //Aufgabe d)
-        return false;
+        return null;
     }
 
  

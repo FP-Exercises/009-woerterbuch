@@ -9,51 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 class DictionaryTest {
-    Dictionary dictionary;
-
-    @BeforeEach
-    void setUp(){
-        dictionary = new Dictionary();
-    }
-
-    @Test
-    public void testGetGermanWord() {
-       assertTrue(dictionary.addWordsToDictionary("hello", "hallo"));
-
-        assertEquals("hallo", dictionary.getGermanWord("hello"));
-    }
-
-    @Test
-    public void testGetEnglishWord() {
-        assertTrue(dictionary.addWordsToDictionary("hello", "hallo"));
-        assertEquals("hello", dictionary.getEnglischWord("hallo"));
-    }
    
-    @Test
-    public void testAddWordsToDictionary() {
-        assertTrue(dictionary.addWordsToDictionary("apple", "apfel"));
-
-        assertEquals("apfel", dictionary.getGermanWord("apple"));
-        assertEquals("apple", dictionary.getEnglischWord("apfel"));
-    }
-
-    @Test
-    public void testRemoveWordFromDictionary() {
-        assertTrue(dictionary.addWordsToDictionary("apple", "apfel"));
-        assertEquals("apfel", dictionary.getGermanWord("apple"));
-        assertEquals("apple", dictionary.getEnglischWord("apfel"));
-
-        dictionary.removeWordFromDictionary("apple");
-        assertEquals("no english word found", dictionary.getEnglischWord("apfel"));
-        assertEquals("no translation found", dictionary.getGermanWord("apple"));
-    }
-
-    @Test
-    public void testChangeTranslation() {
-        dictionary.addWordsToDictionary("hello", "hallo");
-        assertTrue(dictionary.changeTranslation("hello", "guten Tag"));
-
-        assertEquals("guten Tag", dictionary.getGermanWord("hello"));
-    }
 
 }
