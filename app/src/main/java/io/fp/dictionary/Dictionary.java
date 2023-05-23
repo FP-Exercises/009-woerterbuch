@@ -15,8 +15,9 @@ public class Dictionary {
         //Aufgabe b)
     }
 
-    public void changeTranslation(String englishWord, String germanWord) throws DictionaryException{
+    public String changeTranslation(String englishWord, String germanWord) throws DictionaryException{
         //Aufgabe c)
+        return null;
     }
 
     public String getGermanWord(String english) throws DictionaryException{

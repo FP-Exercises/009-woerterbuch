@@ -45,10 +45,10 @@ public class App {
         }
 
         try {
-            dictionary.changeTranslation("apple", "grüner apfel");
+            System.out.println("Changed: " +dictionary.changeTranslation("apple", "grüner apfel")
+             +", into: " + dictionary.getGermanWord("apple"));
         } catch (DictionaryException e) {
            System.out.println(e.getMessage());
         }
-
     }
 }
