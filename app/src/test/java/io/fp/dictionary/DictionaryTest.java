@@ -41,6 +41,9 @@ class DictionaryTest {
     @Test
     public void testRemoveWordFromDictionary() {
         dictionary.addWordsToDictionary("apple", "apfel");
+        assertEquals("apfel", dictionary.getGermanWord("apple"));
+        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+
         dictionary.removeWordFromDictionary("apple");
         assertEquals("no english word found", dictionary.getEnglischWord("apfel"));
         assertEquals("no translation found", dictionary.getGermanWord("apple"));

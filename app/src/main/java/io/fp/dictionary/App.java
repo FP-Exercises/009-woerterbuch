@@ -30,6 +30,5 @@ public class App {
         System.out.println("Changed: " +dictionary.changeTranslation("apple", "grüner apfel")
          +", into: " + dictionary.getGermanWord("apple"));
 
-        System.out.println(dictionary.findWordsByLetter("c").toString());
     }
 }
