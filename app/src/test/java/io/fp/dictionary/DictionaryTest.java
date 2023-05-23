@@ -9,6 +9,59 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 class DictionaryTest {
+    Dictionary dictionary;
+
+    @BeforeEach
+    void setUp(){
+        dictionary = new Dictionary();
+    }
+
+    @Test
+    public void testGetGermanWord() throws DictionaryException {
+       dictionary.addWordsToDictionary("hello", "hallo");
+
+        assertEquals("hallo", dictionary.getGermanWord("hello"));
+    }
+
+    @Test
+    public void testGetEnglishWord() throws DictionaryException {
+        dictionary.addWordsToDictionary("hello", "hallo");
+        assertEquals("hello", dictionary.getEnglischWord("hallo"));
+    }
    
+    @Test
+    public void testAddWordsToDictionary() throws DictionaryException{
+        dictionary.addWordsToDictionary("apple", "apfel");
+
+        assertEquals("apfel", dictionary.getGermanWord("apple"));
+        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+    }
+
+    @Test
+    public void testRemoveWordFromDictionary() throws DictionaryException{
+        dictionary.addWordsToDictionary("apple", "apfel");
+        assertEquals("apfel", dictionary.getGermanWord("apple"));
+        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+
+        dictionary.removeWordFromDictionary("apple");
+        assertThrows(DictionaryException.class,
+        () ->{
+            dictionary.getEnglischWord("apfel");
+        }
+        );
+        assertThrows(DictionaryException.class,
+        () ->{
+            dictionary.getGermanWord("apple");
+        }
+        );
+    }
+
+    @Test
+    public void testChangeTranslation() throws DictionaryException {
+        dictionary.addWordsToDictionary("hello", "hallo");
+        dictionary.changeTranslation("hello", "guten Tag");
+
+        assertEquals("guten Tag", dictionary.getGermanWord("hello"));
+    }
 
 }
