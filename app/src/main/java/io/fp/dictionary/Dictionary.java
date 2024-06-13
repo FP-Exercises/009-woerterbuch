@@ -5,7 +5,11 @@ import java.util.TreeMap;
 
 public class Dictionary {
 
-    private Map<String, String> dictionary = new TreeMap<>();
+    private final Map<String, String> dictionary = new TreeMap<>();
+
+    public Map<String, String> getDictionary() {
+        return dictionary;
+    }
 
     public void addWordsToDictionary(String english, String german) throws DictionaryException {
        //Aufgabe a)
