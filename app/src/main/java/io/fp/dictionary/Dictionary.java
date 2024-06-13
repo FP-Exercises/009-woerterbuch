@@ -29,7 +29,7 @@ public class Dictionary {
         return null;
     }
 
-    public String getEnglischWord(String germanWord) throws DictionaryException{
+    public String getEnglishWord(String germanWord) throws DictionaryException{
         //Aufgabe d)
         return null;
     }

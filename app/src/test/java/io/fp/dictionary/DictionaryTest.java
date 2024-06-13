@@ -98,14 +98,14 @@ class DictionaryTest {
         // Works if d) part 2 is correct
         dictionary.getDictionary().put("apple", "apfel");
         // Check if English word is retrieved correctly
-        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+        assertEquals("apple", dictionary.getEnglishWord("apfel"));
     }
 
     @Test
     void testGetEnglishWordException() throws DictionaryException {
         // Works if d) part 2 is correct
         // Test if getting a non-existing word throws an exception
-        assertThrows(DictionaryException.class ,() -> dictionary.getGermanWord("apfel"));
+        assertThrows(DictionaryException.class ,() -> dictionary.getEnglishWord("apfel"));
     }
 
 }
