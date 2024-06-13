@@ -4,53 +4,8 @@
 package io.fp.dictionary;
 
 public class App {
-   
-
     public static void main(String[] args) {
-        Dictionary dictionary = new Dictionary();
-
-       
-        try {
-            dictionary.addWordsToDictionary("apple", "apfel");
-            dictionary.addWordsToDictionary("banana", "banane");
-            dictionary.addWordsToDictionary("orange", "orange");
-            dictionary.addWordsToDictionary("grape", "traube");
-            dictionary.addWordsToDictionary("strawberry", "erdbeere");
-            dictionary.addWordsToDictionary("carrot", "karotte");
-            dictionary.addWordsToDictionary("tomato", "tomate");
-            dictionary.addWordsToDictionary("potato", "kartoffel");
-            dictionary.addWordsToDictionary("cucumber", "gurke");
-            dictionary.addWordsToDictionary("lettuce", "salat");
-        } catch (DictionaryException e) {
-           System.out.println(e.getMessage());
-        }
-        
-
-        try {
-            System.out.println(dictionary.getEnglischWord("apfel"));
-        } catch (DictionaryException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            System.out.println(dictionary.getGermanWord("lettuce"));
-        } catch (DictionaryException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        try {
-            dictionary.removeWordFromDictionary("orange");
-        } catch (DictionaryException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            System.out.println("Changed: " +dictionary.changeTranslation("apple", "grüner apfel")
-             +", into: " + dictionary.getGermanWord("apple"));
-        } catch (DictionaryException e) {
-           System.out.println(e.getMessage());
-        }
-
-        System.out.println(dictionary.findWordsByLetter("c").toString());
+        System.out.println("Run tests in test classes to see if your app works.");
+        System.out.println("This file can be used for manual testing purposes");
     }
 }

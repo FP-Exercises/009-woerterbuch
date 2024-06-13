@@ -22,7 +22,7 @@ class DictionaryTest {
         // Add to dictionary
         dictionary.addWordsToDictionary("apple", "apfel");
         // Check if dictionary contains the added word
-        assertTrue(dictionary.getDictionary().get("apple").equals("apfel"));
+        assertEquals("apfel", dictionary.getDictionary().get("apple"));
     }
 
     @Test
