@@ -7,7 +7,11 @@ import java.util.Map.Entry;
 
 public class Dictionary {
 
-    private Map<String, String> dictionary = new TreeMap<>();
+    private final Map<String, String> dictionary = new TreeMap<>();
+
+    public Map<String, String> getDictionary() {
+        return this.dictionary;
+    }
 
     public void addWordsToDictionary(String english, String german) throws DictionaryException {
         if(dictionary.containsKey(english)) throw new DictionaryException(english + " is not in the dictionary");

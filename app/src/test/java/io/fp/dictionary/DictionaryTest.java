@@ -15,53 +15,97 @@ class DictionaryTest {
     void setUp(){
         dictionary = new Dictionary();
     }
-
-    @Test
-    public void testGetGermanWord() throws DictionaryException {
-       dictionary.addWordsToDictionary("hello", "hallo");
-
-        assertEquals("hallo", dictionary.getGermanWord("hello"));
-    }
-
-    @Test
-    public void testGetEnglishWord() throws DictionaryException {
-        dictionary.addWordsToDictionary("hello", "hallo");
-        assertEquals("hello", dictionary.getEnglischWord("hallo"));
-    }
    
     @Test
-    public void testAddWordsToDictionary() throws DictionaryException{
+    void testAddWordsToDictionary() throws DictionaryException{
+        // Works if a) is correct
+        // Add to dictionary
         dictionary.addWordsToDictionary("apple", "apfel");
-
-        assertEquals("apfel", dictionary.getGermanWord("apple"));
-        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+        // Check if dictionary contains the added word
+        assertTrue(dictionary.getDictionary().get("apple").equals("apfel"));
     }
 
     @Test
-    public void testRemoveWordFromDictionary() throws DictionaryException{
+    void testAddingException() throws DictionaryException {
+        // Works if a) is correct
+        // Add to dictionary
         dictionary.addWordsToDictionary("apple", "apfel");
-        assertEquals("apfel", dictionary.getGermanWord("apple"));
-        assertEquals("apple", dictionary.getEnglischWord("apfel"));
 
+        // Test if adding again throws exception
+        assertThrows(DictionaryException.class ,() -> dictionary.addWordsToDictionary("apple", "apfel"));
+
+    }
+
+    @Test
+    void testRemoveWordFromDictionary() throws DictionaryException{
+        // Works if b) is correct
+        // Add to dictionary manually
+        dictionary.getDictionary().put("apple", "apfel");
+
+        // Remove
         dictionary.removeWordFromDictionary("apple");
-        assertThrows(DictionaryException.class,
-        () ->{
-            dictionary.getEnglischWord("apfel");
-        }
-        );
-        assertThrows(DictionaryException.class,
-        () ->{
-            dictionary.getGermanWord("apple");
-        }
-        );
+
+        // If removing works, size of dictionary should be 0
+        assertEquals(0, dictionary.getDictionary().size());
     }
 
     @Test
-    public void testChangeTranslation() throws DictionaryException {
-        dictionary.addWordsToDictionary("hello", "hallo");
-        dictionary.changeTranslation("hello", "guten Tag");
+    void testRemovingException() throws DictionaryException {
+        // Works if b) is correct
+        // Test if removing non-existing word causes an exception
+        assertThrows(DictionaryException.class ,() -> dictionary.removeWordFromDictionary("apple"));
+    }
 
-        assertEquals("guten Tag", dictionary.getGermanWord("hello"));
+    @Test
+    void testChangeTranslation() throws DictionaryException {
+        // Works if c) is correct
+        // Add to dictionary manually
+        dictionary.getDictionary().put("apple", "apfel");
+
+        // Change translation
+        dictionary.changeTranslation("apple", "apfel2");
+
+        // Compare changed word with manually retrieved value for specified key
+        assertEquals("apfel2", dictionary.getDictionary().get("apple"));
+
+    }
+
+    @Test
+    void testChangeTranslationException() throws DictionaryException {
+        // Works if c) is correct
+        // Test if changing non-existing word causes an exception
+        assertThrows(DictionaryException.class ,() ->
+                dictionary.changeTranslation("apple", "apfel2"));
+    }
+
+    @Test
+    void testGetGermanWord() throws DictionaryException {
+        // Works if d) part 1 is correct
+        dictionary.getDictionary().put("apple", "apfel");
+        // Check if German word is retrieved correctly
+        assertEquals("apfel", dictionary.getGermanWord("apple"));
+    }
+
+    @Test
+    void testGetGermanWordException() throws DictionaryException {
+        // Works if d) part 1 is correct
+        // Test if getting a non-existing word throws an exception
+        assertThrows(DictionaryException.class ,() -> dictionary.getGermanWord("apple"));
+    }
+
+    @Test
+    void testGetEnglishWord() throws DictionaryException {
+        // Works if d) part 2 is correct
+        dictionary.getDictionary().put("apple", "apfel");
+        // Check if English word is retrieved correctly
+        assertEquals("apple", dictionary.getEnglischWord("apfel"));
+    }
+
+    @Test
+    void testGetEnglishWordException() throws DictionaryException {
+        // Works if d) part 2 is correct
+        // Test if getting a non-existing word throws an exception
+        assertThrows(DictionaryException.class ,() -> dictionary.getGermanWord("apfel"));
     }
 
 }
