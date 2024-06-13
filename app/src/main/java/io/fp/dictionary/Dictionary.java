@@ -30,7 +30,7 @@ public class Dictionary {
         return dictionary.get(english);
     }
 
-    public String getEnglischWord(String germanWord) throws DictionaryException{
+    public String getEnglishWord(String germanWord) throws DictionaryException{
         if (!dictionary.containsValue(germanWord)) throw new DictionaryException(germanWord+ " is not in the dictionary");
         
         String englishWord = "";
