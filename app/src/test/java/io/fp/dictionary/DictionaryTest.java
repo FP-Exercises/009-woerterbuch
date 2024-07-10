@@ -12,6 +12,7 @@ class DictionaryTest {
     Dictionary dictionary;
 
     @BeforeEach
+    // Run before each test
     void setUp(){
         dictionary = new Dictionary();
     }
